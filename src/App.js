@@ -6,11 +6,19 @@ import Confirmation from './Components/Confirmation/Confirmation';
 import Survey from './Components/Survey/Survey';
 import UserInformation from './Components/UserInformation/UserInformation';
 
+import ProgressBar from "./Components/ProgressBar/ProgressBar";
+
 function App() {
   const [state, send, service] = useMachine(appMachine);
-  if (state.value === "userInfo") return <UserInformation appMachineService={service}/>;
-  if (state.value === "survey") return <Survey appMachineService={service}/>;
-  return <Confirmation appMachineService={service}/>;
+  return (
+    <div>
+      <ProgressBar appMachineService={service}/>
+      {state.value === "userInfo" && <UserInformation appMachineService={service}/>}
+  {state.value === "survey" && <Survey appMachineService={service}/>}
+  {state.value === "confirmation" && <Confirmation appMachineService={service}/>}
+    </div>
+  )
+  
 }
 
 export default App;
