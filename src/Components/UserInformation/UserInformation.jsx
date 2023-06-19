@@ -25,7 +25,10 @@ function UserInformation({ appMachineService }) {
     if (name.trim().length === 0) {
       setNameError("Name is required");
       flag = false;
-    } else if (name.length > 50) {
+    } else if (name.trim().length < 2) {
+      setNameError("Please enter at least two characters");
+      flag = false;
+    } else if (name.trim().length > 50) {
       setNameError("Please enter an abbreviated name");
       flag = false;
     } else {
@@ -51,7 +54,7 @@ function UserInformation({ appMachineService }) {
       send({
         type: "SUBMIT_USER_INFO",
         userInfo: {
-          name,
+          name: name.trim(),
           email,
         },
       });
