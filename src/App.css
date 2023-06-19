@@ -107,3 +107,7 @@
   margin-bottom: 6px;
   margin-right: 8px;
 }
+
+.mcq-group > .mcq-label {
+  user-select: none;
+}

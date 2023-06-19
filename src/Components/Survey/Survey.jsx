@@ -51,7 +51,13 @@ function Survey({appMachineService}) {
           <label className='input-label'>{question.q}</label>
           {hasSubmittedOnce && question.required && !responses[question.name] && <p className='input-error-label' style={{marginTop: -2, marginBottom: 4}}>Please select a value</p>}
           {question.options.map(opt=>(
-              <div className='mcq-group'>
+              <div className='mcq-group' onClick={(e)=>{
+                if(e.target.tagName === 'LABEL') {
+                e.preventDefault();
+                e.stopPropagation();
+                e.currentTarget.getElementsByTagName('input')[0].click();
+                }
+              }}>
                 <input className='mcq-input' type={question.type} id={opt} name={question.name} value={opt} onChange={recordResponse} checked={question.type === 'radio'? responses[question.name] === opt : (responses[question.name] || {})[opt] === true}/>
                 <label className="mcq-label" htmlFor={question.name}>{opt}</label>
               </div>

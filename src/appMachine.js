@@ -46,6 +46,21 @@ export const appMachine = createMachine({
       },
       BACK_TO_SURVEY: {
         target: 'survey'
+      },
+      RESET: {
+        target: "userInfo",
+        actions: assign({
+            userInfo: ()=>({
+                name: "",
+                email: "",
+                hasSubmittedOnce: false
+            }),
+            survey: ()=>({
+                responses: {},
+                questions,
+                hasSubmittedOnce: false
+            })
+        })
       }
   }
 });
