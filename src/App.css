@@ -8,6 +8,7 @@
 
 .form-container {
   width: 400px;
+  max-width: calc(100vw - 32px);
   display: flex;
   flex-direction: column;
   justify-content: center;
