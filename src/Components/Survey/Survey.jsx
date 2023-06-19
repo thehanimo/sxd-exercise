@@ -58,7 +58,7 @@ function Survey({appMachineService}) {
                 e.currentTarget.getElementsByTagName('input')[0].click();
                 }
               }}>
-                <input className='mcq-input' type={question.type} id={opt} name={question.name} value={opt} onChange={recordResponse} checked={question.type === 'radio'? responses[question.name] === opt : (responses[question.name] || {})[opt] === true}/>
+                <input data-testid={`label-input-${question.name}-${opt}`} className='mcq-input' type={question.type} id={opt} name={question.name} value={opt} onChange={recordResponse} checked={question.type === 'radio'? responses[question.name] === opt : (responses[question.name] || {})[opt] === true}/>
                 <label className="mcq-label" htmlFor={question.name}>{opt}</label>
               </div>
           ))}

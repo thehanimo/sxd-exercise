@@ -37,7 +37,7 @@ function Confirmation({appMachineService}) {
             {question.type === "radio" ? (
               <div className='input'>{survey.responses[question.name] || "None"}</div>
             ) : (
-              <div className='input'>{(question.options).filter(x=>survey.responses[question.name][x] === true).join(", ") || "None"}</div>
+              <div className='input'>{(question.options).filter(x=>(survey.responses[question.name] || {})[x] === true).join(", ") || "None"}</div>
             )}
             
           </>

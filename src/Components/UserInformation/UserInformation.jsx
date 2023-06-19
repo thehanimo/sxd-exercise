@@ -54,12 +54,12 @@ function UserInformation({appMachineService}) {
     <div className='bg'>
       <div className='form-container'>
         <h1 style={{marginBottom: 48}}>User Information</h1>
-        <label className='input-label'>Name</label>
+        <label className='input-label' id="name-label">Name</label>
         {nameError && <label className='input-error-label'>{nameError}</label>}
-        <input className={`input ${nameError?"input-error": ""}`} onChange={(e) => setName(e.target.value)} value={name} />
-        <div className='input-label'>Email</div>
+        <input aria-labelledby="name-label" className={`input ${nameError?"input-error": ""}`} onChange={(e) => setName(e.target.value)} value={name} />
+        <label className='input-label' id="email-label">Email</label>
         {emailError && <label className='input-error-label'>{emailError}</label>}
-        <input className={`input ${nameError?"input-error": ""}`} onChange={(e) => setEmail(e.target.value)} value={email} />
+        <input aria-labelledby="email-label" className={`input ${nameError?"input-error": ""}`} onChange={(e) => setEmail(e.target.value)} value={email} />
         <button className='button' style={{marginTop: 16}} onClick={submit}>Next</button>
       </div>
     </div>
