@@ -1,5 +1,43 @@
-.App {
-  text-align: center;
+.bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 32px;
+}
+
+.form-container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-label {
+  width: 100%;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input {
+  font-family: 'Martel';
+  color: #212529;
+  font-size: 12px;
+  border-radius: 4px;
+  height: 32px;
+  width: calc(100% - 16px);
+  margin-bottom: 22px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid #EEE;
+  outline: none;
+  transition: border .3s ease;
+}
+.input:focus {
+  border-color: #FFF;
+  border: 1px solid #212529;
 }
 
 .App-logo {
@@ -7,32 +45,39 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button {
+  box-shadow: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* CSS */
+.button {
+  align-self: flex-end;
+  background-color: #EEE;
+  border: 1px solid #212529;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 16px;
+  height: 40px;
+  font-weight: bold;
+  font-family: 'Martel';
+  cursor: pointer;
+  outline: none;
+  padding: 0px 14px;
+  padding-top: 2px;
+  text-align: center;
+  transition: all .3s ease;
+  user-select: none;
 }
 
-.App-link {
-  color: #61dafb;
+.button:disabled {
+  pointer-events: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button:hover {
+  background-color: #212529;
+  color: #EEE;
+}
+
+.button:active {
+  box-shadow: none;
 }
