@@ -48,7 +48,10 @@ function Confirmation({ appMachineService }) {
         <div className="input">{userInfo.email}</div>
         {survey.questions.map((question) => (
           <>
-            <label className="input-label">{question.q}</label>
+            <label className="input-label">
+              {question.q}
+              {question.required && "*"}
+            </label>
             {question.type === "radio" ? (
               <div className="input">
                 {survey.responses[question.name] || "None"}

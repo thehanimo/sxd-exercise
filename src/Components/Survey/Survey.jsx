@@ -59,7 +59,10 @@ function Survey({ appMachineService }) {
         <h1 style={{ marginBottom: 48 }}>Survey</h1>
         {questions.map((question) => (
           <div style={{ marginBottom: 16, width: "100%" }} key={question.name}>
-            <label className="input-label">{question.q}</label>
+            <label className="input-label">
+              {question.q}
+              {question.required && "*"}
+            </label>
             {hasSubmittedOnce &&
               question.required &&
               !responses[question.name] && (
@@ -67,7 +70,7 @@ function Survey({ appMachineService }) {
                   className="input-error-label"
                   style={{ marginTop: -2, marginBottom: 4 }}
                 >
-                  Please select a value
+                  Required
                 </p>
               )}
             {question.options.map((opt) => (
