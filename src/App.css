@@ -66,6 +66,7 @@
 .button {
   align-self: flex-end;
   background-color: #EEE;
+  color: #212529;
   border: 1px solid #212529;
   border-radius: 8px;
   font-size: 16px;
