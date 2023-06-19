@@ -21,6 +21,16 @@
   font-weight: bold;
 }
 
+.input-error-label {
+  width: 100%;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #CD1818;
+  margin-top: -8px;
+  margin-bottom: 4px;
+}
+
 .input {
   font-family: 'Martel';
   color: #212529;
@@ -80,4 +90,18 @@
 
 .button:active {
   box-shadow: none;
+}
+
+.mcq-group {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+  margin-left: 16px;
+}
+
+.mcq-group > .mcq-input {
+  margin-bottom: 6px;
+  margin-right: 8px;
 }
