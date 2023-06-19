@@ -1,0 +1,35 @@
+[
+    {
+        "q": "Which city are you currently located in?",
+        "name": "city",
+        "type": "radio",
+        "required": true,
+        "options": [
+            "New York City",
+            "Los Angeles",
+            "Other"
+        ]
+    },
+    {
+        "q": "How did you hear about us?",
+        "name": "hear",
+        "required": true,
+        "type": "radio",
+        "options": [
+            "Facebook",
+            "Instagram",
+            "Other"
+        ]
+    },
+    {
+        "q": "What brands do you like?",
+        "name": "brand",
+        "required": false,
+        "type": "checkbox",
+        "options": [
+            "Uniqlo",
+            "Zara",
+            "Massimo Dutti"
+        ]
+    }
+]

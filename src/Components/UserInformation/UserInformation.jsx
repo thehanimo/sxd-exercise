@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import './UserInformation.css';
+import { useActor } from '@xstate/react';
 
-function UserInformation() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+function UserInformation({appMachineService}) {
+    const [{context: {userInfo}}, send] = useActor(appMachineService);
+    const [name, setName] = useState(userInfo.name);
+    const [email, setEmail] = useState(userInfo.email);
 
     const [nameError, setNameError] = useState("");
     const [emailError, setEmailError] = useState("");
-    const [hasSubmittedOnce, setHasSubmittedOnce] = useState(false)
+    const [hasSubmittedOnce, setHasSubmittedOnce] = useState(userInfo.hasSubmittedOnce)
 
-    const verify = () => {
-        if (!hasSubmittedOnce) return;
+    const verify = (force = false) => {
+        if (!hasSubmittedOnce && !force) return;
         let flag = true;
         if (name.trim().length === 0) {
           setNameError("Name is required");
@@ -37,6 +39,12 @@ function UserInformation() {
 
     const submit = ()=> {
         if (!hasSubmittedOnce) setHasSubmittedOnce(true);
+        if (verify(true)) {
+            send({ type: 'SUBMIT_USER_INFO', userInfo: {
+                name,
+                email
+              } });
+        }
     }
 
     useEffect(()=>{

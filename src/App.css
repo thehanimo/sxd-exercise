@@ -55,8 +55,10 @@
   pointer-events: none;
 }
 
-.button {
-  box-shadow: none;
+.button-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 /* CSS */

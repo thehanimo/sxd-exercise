@@ -1,44 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './Survey.css';
+import { useActor } from '@xstate/react';
 
-function Survey() {
-  const questions = [
-    {
-      q: 'Which city are you currently located in?',
-      name: 'city',
-      type: "radio",
-      required: true,
-      options: [
-        "New York City",
-        "Los Angeles",
-        "Other"
-      ]
-    },
-    {
-      q: 'How did you hear about us?',
-      name: 'hear',
-      required: true,
-      type: "radio",
-      options: [
-        "Facebook",
-        "Instagram",
-        "Other"
-      ]
-    },
-    {
-      q: 'What brands do you like?',
-      name: 'brand',
-      required: false,
-      type: "checkbox",
-      options: [
-        "Uniqlo",
-        "Zara",
-        "Massimo Dutti",
-      ]
-    }
-  ]
-  const [responses, setResponses] = useState({});
-  const [hasSubmittedOnce, setHasSubmittedOnce] = useState(false)
+function Survey({appMachineService}) {
+  const [{context: {survey}}, send] = useActor(appMachineService);
+  const {questions} = survey;
+
+  const [responses, setResponses] = useState(survey.responses);
+  const [hasSubmittedOnce, setHasSubmittedOnce] = useState(survey.hasSubmittedOnce)
 
   const recordResponse = (e)=>{
     const {value, name, checked, type} = e.target;
@@ -52,8 +21,25 @@ function Survey() {
     setResponses({..._responses})
   }
 
+  const verify = (force = true) => {
+    if (!hasSubmittedOnce && !force) return;
+    for(let i = 0; i < questions.length; i += 1){
+      if (questions[i].required && !responses[questions[i].name]) return false;
+    }
+    return true;
+  }
+
   const submit = ()=>{
-    setHasSubmittedOnce(true);
+    if (!hasSubmittedOnce) setHasSubmittedOnce(true);
+    if (verify(true)) {
+        send({ type: 'SUBMIT_SURVEY', survey: {
+            responses,
+          } });
+    }
+  }
+
+  const goBack = ()=>{
+    send({ type: 'BACK_TO_USER_INFO' });
   }
 
   return (
@@ -66,13 +52,16 @@ function Survey() {
           {hasSubmittedOnce && question.required && !responses[question.name] && <p className='input-error-label' style={{marginTop: -2, marginBottom: 4}}>Please select a value</p>}
           {question.options.map(opt=>(
               <div className='mcq-group'>
-                <input className='mcq-input' type={question.type} id={opt} name={question.name} value={opt} onChange={recordResponse}/>
-                <label className="mcq-label" for={question.name}>{opt}</label>
+                <input className='mcq-input' type={question.type} id={opt} name={question.name} value={opt} onChange={recordResponse} checked={question.type === 'radio'? responses[question.name] === opt : (responses[question.name] || {})[opt] === true}/>
+                <label className="mcq-label" htmlFor={question.name}>{opt}</label>
               </div>
           ))}
           </div>
         ))}
-        <button className='button' style={{marginTop: 16}} onClick={submit}>Next</button>
+        <div className='button-group'>
+          <button className='button' style={{marginTop: 16}} onClick={goBack}>Back</button>
+          <button className='button' style={{marginTop: 16}} onClick={submit}>Next</button>
+        </div>
       </div>
     </div>
   );
