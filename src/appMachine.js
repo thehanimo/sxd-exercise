@@ -2,6 +2,7 @@ import { createMachine, assign } from 'xstate';
 import questions from './questions.json';
 
 export const appMachine = createMachine({
+    predictableActionArguments: true,
   id: 'app',
   initial: 'userInfo',
   context: {

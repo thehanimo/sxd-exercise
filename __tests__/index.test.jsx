@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import App from './App';
-import { appMachine } from "./appMachine";
+import App from '@/pages/_app';
+import { appMachine } from '@/appMachine'
 
 const goToSurvey = ()=>{
   render(<App />);

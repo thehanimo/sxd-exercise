@@ -1,0 +1,160 @@
+body {
+    background-color: #EEE;
+    color: #212529;
+    margin: 0;
+    font-family: 'Martel', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  .bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 32px;
+  }
+  
+  .form-container {
+    width: 400px;
+    max-width: calc(100vw - 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input-label {
+    width: 100%;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .input-error-label {
+    width: 100%;
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #CD1818;
+    margin-top: -8px;
+    margin-bottom: 4px;
+  }
+  
+  .input {
+    font-family: 'Martel';
+    color: #212529;
+    font-size: 12px;
+    border-radius: 4px;
+    height: 32px;
+    width: calc(100% - 16px);
+    margin-bottom: 22px;
+    padding: 0 8px;
+    outline: none;
+    border: 1px solid #EEE;
+    outline: none;
+    transition: border .3s ease;
+  }
+  .input:focus {
+    border-color: #FFF;
+    border: 1px solid #212529;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .button-group {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  /* CSS */
+  .button {
+    align-self: flex-end;
+    background-color: #EEE;
+    color: #212529;
+    border: 1px solid #212529;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 16px;
+    height: 40px;
+    font-weight: bold;
+    font-family: 'Martel';
+    cursor: pointer;
+    outline: none;
+    padding: 0px 14px;
+    padding-top: 2px;
+    text-align: center;
+    transition: all .3s ease;
+    user-select: none;
+  }
+  
+  .button:disabled {
+    pointer-events: none;
+  }
+  
+  .button:hover {
+    background-color: #212529;
+    color: #EEE;
+  }
+  
+  .button:active {
+    box-shadow: none;
+  }
+  
+  .mcq-group {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    margin-left: 16px;
+  }
+  
+  .mcq-group > .mcq-input {
+    margin-bottom: 6px;
+    margin-right: 8px;
+  }
+  
+  .mcq-group > .mcq-label {
+    user-select: none;
+  }
+  
+  .progress-bar-wrapper {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+  }
+  .progress-bar-container {
+    width: min(400px, calc(100vw - 48px));
+  }
+  
+  
+  .indexedStep {
+    font-size: 24px;
+    background-color: #EEE;
+    border: 1px solid #212529;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 100%;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .indexedStep.accomplished {
+    background-color: #212529;
+    color: #EEE;
+  }
+  
